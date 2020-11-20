@@ -1,29 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { DummyComponent } from './dummy/dummy.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DummyComponent } from './components/dummy/dummy.component';
+import { HomeComponent } from './components/home/home.component';
+import { PreferencesComponent } from './components/preferences/preferences.component';
+import { RecordsComponent } from './components/records/records.component';
+import { GameComponent } from './components/game/game.component';
+import { LoginComponent } from './components/login/login.component';
+import { CardComponent } from './components/card/card.component';
+
+import { MaterialModule} from './material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StopwatchComponent } from './components/stopwatch/stopwatch.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DummyComponent
+    DummyComponent,
+    HomeComponent,
+    PreferencesComponent,
+    RecordsComponent,
+    GameComponent,
+    LoginComponent,
+    CardComponent,
+    StopwatchComponent,
+    DashboardComponent,
+    SignupComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
