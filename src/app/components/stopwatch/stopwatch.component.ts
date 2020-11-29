@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'stopwatch',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stopwatch.component.css']
 })
 export class StopwatchComponent implements OnInit {
+  @Input() timeStr: string;
 
   constructor() { }
 

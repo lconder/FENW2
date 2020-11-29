@@ -21,6 +21,7 @@ import { StopwatchComponent } from './components/stopwatch/stopwatch.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserComponent } from './components/user/user.component';
+import { SaveComponent } from './components/save/save.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserComponent } from './components/user/user.component';
     StopwatchComponent,
     DashboardComponent,
     SignupComponent,
-    UserComponent
+    UserComponent,
+    SaveComponent
   ],
   imports: [
     BrowserModule,

@@ -7,5 +7,6 @@
   <a mat-button routerLink="preferences">Preferencias</a>
   <a mat-button routerLink="records">Records</a>
   <a mat-button routerLink="game">Jugar</a>
-  <a mat-raised-button color="accent" routerLink="user">Usuario</a>
+  <a *ngIf="!isLogged" mat-raised-button color="accent" routerLink="user">Usuario</a>
+  <a *ngIf="isLogged" mat-raised-button color="accent" (click)="logout()">Logout</a>
 </mat-toolbar>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CacheService } from '../../services/cache.service';
 
 @Component({
   selector: 'app-user',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  name: string;
+  isLogged: boolean;
 
-  constructor() { }
+  constructor(private _cache: CacheService) { }
 
   ngOnInit(): void {
+    this._cache.getItem("jwt").subscribe(
+      data => this.isLogged = !!data,
+    );
+    this._cache.getItem("username").subscribe(
+      data => this.name = `${data}`,
+    );
   }
 
 }

@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
-import {RecordService} from "../../services/record.service";
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {UserService} from "../../services/user.service";
+import { UserService } from "../../services/user.service";
+import { SnackbarService } from "../../services/snackbar.service";
+import { CacheService } from "../../services/cache.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(
     public userService: UserService,
     private _builder: FormBuilder,
+    private _snack: SnackbarService,
+    private _cache: CacheService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +30,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(values) {
-    console.log(values);
+    this.userService.loginUser(
+      values.username,
+      values.password,
+    ).subscribe(
+      data => {
+        this.loginForm.reset();
+        this._snack.openSnackBar("Sesión iniciada con éxito", "OK");
+        this._cache.setItem("jwt", data).subscribe(
+          () =>  {},
+          () => {},
+        );
+        this._cache.setItem("username", values.username).subscribe(
+          () =>  {},
+          () => {},
+        );
+        this.router.navigateByUrl('/records');
+      },
+      () => this._snack.openSnackBar("Error iniciando sesión", "OK"),
+    );
   }
 
 

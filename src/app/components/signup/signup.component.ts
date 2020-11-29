@@ -42,6 +42,10 @@ export class SignupComponent implements OnInit {
 
   onSubmit(values) {
     console.log(values);
+    this.userService.createUser(values).subscribe(
+      data => console.log(data),
+      error => console.log({ error }),
+    )
   }
 
 }
